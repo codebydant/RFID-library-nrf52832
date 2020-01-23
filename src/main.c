@@ -37,9 +37,28 @@ int main(void) {
   NRF_LOG_INFO("---	Setting leds ON:                        DONE");
   bsp_board_init(BSP_INIT_LEDS | BSP_INIT_BUTTONS);
 
+  // RFID RX, TX and Baudrate parameters
   NRF_LOG_INFO("---	Setting RFID:                           DONE");
-  RFID_init(10, 11);
+  RFID_init(RX_PIN_NUMBER, TX_PIN_NUMBER, NRF_UART_BAUDRATE_9600);
 
+  /*
+  NRF_UART_BAUDRATE_1200 	1200 baud.
+  NRF_UART_BAUDRATE_2400 	2400 baud.
+  NRF_UART_BAUDRATE_4800 	4800 baud.
+  NRF_UART_BAUDRATE_9600 	9600 baud.
+  NRF_UART_BAUDRATE_14400 	14400 baud.
+  NRF_UART_BAUDRATE_19200 	19200 baud.
+  NRF_UART_BAUDRATE_28800 	28800 baud.
+  NRF_UART_BAUDRATE_38400 	38400 baud.
+  NRF_UART_BAUDRATE_57600 	57600 baud.
+  NRF_UART_BAUDRATE_76800 	76800 baud.
+  NRF_UART_BAUDRATE_115200 	115200 baud.
+  NRF_UART_BAUDRATE_230400 	230400 baud.
+  NRF_UART_BAUDRATE_250000 	250000 baud.
+  NRF_UART_BAUDRATE_460800 	460800 baud.
+  NRF_UART_BAUDRATE_921600 	921600 baud.
+  NRF_UART_BAUDRATE_1000000 1000000 baud
+  */
   while (true) {
     nrf_delay_ms(100);
     idle_state_handle();

@@ -1,10 +1,10 @@
 /*
- * SeeedRFID.h
- * A library for RFID moudle.
+ * RFIDRW_E_TTL.h
+ * A library for the RFIDRW-E-TTL Animal tag and RFID reader writer with external antenna, and TTL output.
  *
  * Copyright (c) 2008-2014 seeed technology inc.
- * Author      : Ye Xiaobo(yexiaobo@seeedstudio.com)
- * Create Time: 2014/2/20
+ * Author      : Daniel Tobon(danielTobon43 Github)
+ * Create Time: 2020/1/23
  *
  * The MIT License (MIT)
  *
@@ -31,20 +31,19 @@
 * Pins
 * ====
 *
-* 1. VCC support 3.3 ~ 5V
-* 2. TX, RX connect to Arduino or Seeeduino
-* 3. T1, T2 is the Signal port for RFID antenna
-* 4. W0, W1 is for wiegand protocol, but this library not support yet.
+* 1. V+ support 5.5 ~ 15V
+* 2. TX_3V, RX_3V connect to nRF52832
+* 3. A+, A- is the Signal port for RFID antenna
 *
 * ```
-* 		+-----------+
-* 	----|VCC	  T1|----
-* 	----|GND	  T2|----
-* 	----|TX		 SER|----
-* 	----|RX		 LED|----
-* 	----|W0		BEEP|----
-* 	----|W1		 GND|----
-* 		+-----------+
+* 		+-----------------------------+
+* 	----|RX_3V	   RX TX V+ V-    	A+|---- Antenna +
+* 	----|TX_3V 	                 	AR|----
+* 	----|V-		                    A-|---- Antenna -
+* 	----|Vo		                    CT|----
+* 	----|V+	                        VC|----
+* 	----|		                    VR|----
+* 		+-----------------------------+
 * ```
 ***************************************************************************/
 
@@ -95,6 +94,6 @@ struct RFIDdata {
 struct RFIDdata _data;
 
 void sendCommand_toRFID(struct nrf_serial_s const *p_serial, char *command);
-void RFID_init(int rxPin, int txPin);
+void RFID_init(uint8_t RX_pinNumber, uint8_t TX_pinNumber, nrf_uart_baudrate_t baudrate);
 
 #endif // RFIDRW_E_TTL_H
