@@ -77,8 +77,8 @@
 #define OP_QUEUES_SIZE 3
 #define APP_TIMER_PRESCALER NRF_SERIAL_APP_TIMER_PRESCALER
 
-#define SERIAL_FIFO_TX_SIZE 1024
-#define SERIAL_FIFO_RX_SIZE 1024
+#define SERIAL_FIFO_TX_SIZE 32
+#define SERIAL_FIFO_RX_SIZE 32
 
 #define SERIAL_BUFF_TX_SIZE 1
 #define SERIAL_BUFF_RX_SIZE 1
@@ -93,7 +93,9 @@ struct RFIDdata {
 
 struct RFIDdata _data;
 
-void sendCommand_toRFID(struct nrf_serial_s const *p_serial, char *command);
+void RFID_sendCommand(char *command_to_RFID, char *RFID_response);
+char *RFID_getResponseCommand();
 void RFID_init(uint8_t RX_pinNumber, uint8_t TX_pinNumber, nrf_uart_baudrate_t baudrate);
+void RFID_waitResponse();
 
 #endif // RFIDRW_E_TTL_H

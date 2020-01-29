@@ -1,8 +1,7 @@
 # RFID Library nRF52832
  This is a C Library for the RFIDRW-E-TTL Animal tag and RFID reader writer with external antenna, and TTL output using nRF5 SDK 16.0 (**nRF52832 board**) 
 
- <img src="./example1.png" align="center" height="500" width="900"><br>
- <img src="./example2.png" align="center" height="600" width="700"><br>
+ <img src="./example.png" align="center" height="500" width="900"><br>
 
 ## How to compile and flash
 1. Download:
